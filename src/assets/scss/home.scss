@@ -1,0 +1,138 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+#home {
+  width: 100%;
+  display: flex;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 100px;
+
+    .page-title {
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #333;
+      
+      @include sm {
+        text-align: center;
+      }
+
+      small {
+        text-transform: capitalize;
+        color: #666;
+        font-size: 18px;
+
+        @include sm {
+          display: block;
+        }
+      }
+    }
+
+    .rect {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .graph-items {
+      display: flex;
+      gap: 30px;
+
+      @include lg {
+        flex-direction: column;
+      }
+    }
+
+    .graph {
+      display: flex;
+      flex-direction: column;
+      width: 33.3%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+
+      @include lg {
+        width: 100%;
+      }
+
+      .graph-title {
+        font-size: 20px;
+        font-weight: 600;
+        border-bottom: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 10px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 10px;
+        background: #006189;
+        color: #fff;
+      }
+
+      .graph-desc {
+        font-size: 18px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+      }
+
+      .status {
+        padding: 0px 0px 30px;
+      
+        .status-color {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          span {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .chartjs-render {
+        padding: 0 15px 15px;
+      }
+    }
+  }
+}

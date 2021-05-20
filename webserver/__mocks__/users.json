@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "funcionario",
+    "email": "usuariocomum@teste.com.br",
+    "password": "teste123",
+    "perfil": "Padrão"
+  },
+  {
+    "id": 2,
+    "name": "administrador",
+    "email": "usarioadm@teste.com.br",
+    "password": "admin",
+    "perfil": "Administrador"
+  },
+  {
+    "id": 3,
+    "name": "carlos",
+    "email": "carlos@teste.com",
+    "password": "teste1",
+    "perfil": "Padrão"
+  },
+  {
+    "id": 4,
+    "name": "ana",
+    "email": "ana@teste.com",
+    "password": "teste2",
+    "perfil": "Padrão"
+  },
+  {
+    "id": 5,
+    "name": "juliana",
+    "email": "juliana@teste.com",
+    "password": "teste3",
+    "perfil": "Padrão"
+  }
+]

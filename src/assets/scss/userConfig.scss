@@ -1,0 +1,214 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+#user-adm {
+  width: 100%;
+  display: flex;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 120px;
+
+    @include lg {
+      padding: 15px;
+      margin-bottom: 150px;
+    }
+
+    .scroll-table-mobile {
+      @include sm {
+        overflow: scroll;
+        overflow-y: hidden;
+      }  
+    }
+
+    .add-user {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .add-user button {
+      background: #006189;
+      color: #fff;
+      border: 0;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      transition: all .2s ease;
+
+      &:hover {
+        background: #00839f;
+      }
+
+      span {
+        margin-right: 5px;
+      }
+    }
+
+    .page-title {
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #000;
+
+      @include sm {
+        text-align: center;
+      }
+    }
+
+    .user-table thead {
+      padding: 15px;
+      background: #00839f;
+      color: #fff;
+    }
+
+    .user-table {
+      border: 1px double #eee;
+      width: 100%;
+      
+      .bgGray {
+        background: #eee;
+      }
+
+      th, tr {
+        height: 50px;
+        padding: 15px;
+      }
+
+      th:nth-last-child(-n+2), td:nth-last-child(-n+2) {
+        width: 100px;
+        text-align: center;
+      }
+
+      tr {
+        transition: all .2s ease-in-out;
+        border: 1px solid transparent;
+
+        &:hover {
+          border: whatever;
+          border-style: double;
+          background: #00b6b92d;
+          border: 1px double #00b6b963;
+        }
+      }
+
+      td {
+        padding: 15px;
+      }
+
+      .user-action {
+        background: none;
+        border: 0;
+        padding: 0;
+
+        &.edit {
+          color: #f4a117;
+        }
+
+        &.delete {
+          color: #c90005;
+        }
+
+        &:hover {
+          opacity: .7;
+        }
+      }
+    }
+  }
+
+  .form-register, .form-change, .form-exclude {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .title-form {
+      font-size: 21px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      text-align: center;
+      border-bottom: 1px solid #999;
+      padding-bottom: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input, select {
+        margin-bottom: 20px;
+        height: 40px;
+        padding: 0 10px;
+      }
+    }
+
+    .form-btn {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .form-btn button {
+      display: flex;
+      font-size: 16px;
+      padding: 8px 10px;
+      gap: 5px;
+      background: none;
+      border: 0;
+      color: #fff;
+      width: 100%;
+      justify-content: center;
+
+      &:first-child {
+        background: #0d9300;
+      }
+
+      &:last-child {
+        background: #c90005;
+      }
+    }
+
+    .exclude-msg {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+}
