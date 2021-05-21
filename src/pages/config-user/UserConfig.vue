@@ -25,7 +25,6 @@
               <td>{{ item.perfil }}</td>
               <td>
                 <button type="button" class="user-action edit">
-                  <!-- <span class="material-icons" @click="$modal.show('form-change')">edit</span> -->
                   <span class="material-icons" @click="listaUser(item.id)">edit</span>
                 </button>
               </td>
@@ -45,7 +44,7 @@
           <div class="title-form">Cadastrar usuário</div>
           <form autocomplete="false">
             <input type="text" value="" placeholder="Nome do usuário">
-            <input type="email" value="" placeholder="E-mail">
+            <input type="email" value="" v-model="userSel.email" placeholder="E-mail">
             <select name="nivel_acesso">
               <option value="" disabled selected>Selecione o perfil do usuário:</option>
               <option value="padrão">Padrão</option>
@@ -65,17 +64,17 @@
       </modal>
 
       <!-- FORMULÁRIO DE ALTERAÇÃO -->
-      <modal name="form-change" :key="item.id" v-for="item in userSel" :width="500" :height="327" :adaptive="true">
+      <modal name="form-change" :width="500" :height="327" :adaptive="true">
         <div class="form-change">
           <div class="title-form">Alterar usuário</div>
           <form autocomplete="false">
-            <input type="email" value="" v-model="item.email" placeholder="E-mail">
+            <input type="email" value="" v-model="userSel.email" placeholder="E-mail">
             <select name="access_level">
               <option value="" disabled selected>Selecione o perfil do usuário:</option>
-              <option value="padrão">Padrão</option>
-              <option value="administrador">Administrador</option>
+              <option value="padrão" :selected="userSel.perfil === 'Padrão' ? 'selected' : ''">Padrão</option>
+              <option value="administrador" :selected="userSel.perfil === 'Administrador' ? 'selected' : ''">Administrador</option>
             </select>
-            <input type="password" value="" v-model="item.password" placeholder="Senha">
+            <input type="password" value="" v-model="userSel.password" placeholder="Senha">
           </form>
           <div class="form-btn">
             <button @click="$modal.hide('form-change')">
@@ -114,7 +113,11 @@ import { mapState, mapActions } from 'vuex'
 export default {
   name: 'config-user',
   data () {
-    return { userSel: null }
+    return { userSel: {
+      email: '',
+      password: '',
+      perfil: ''
+    } }
   },
   computed: {
     ...mapState('userlist', ['userlist'])
@@ -122,7 +125,11 @@ export default {
   methods: {
     ...mapActions('userlist', ['ActionUserList']),
     listaUser (id) {
-      this.userSel = this.$store.state.userlist.userlist.filter(i => i.id === id)
+      const arrUser = this.$store.state.userlist.userlist.filter(i => i.id === id)
+      // ATUALIZA O DATA PARA O FORM DE ALTERAÇÃO
+      this.userSel.email = arrUser[0].email
+      this.userSel.password = arrUser[0].password
+      this.userSel.perfil = arrUser[0].perfil
       this.$modal.show('form-change')
     }
   },
