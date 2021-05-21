@@ -2,10 +2,10 @@
 
 Este é um projeto básico com sistema de login usando token, possui um controle da lista de usuários e foi feito em uma página SPA usando Vue.js, acessando páginas com rotas e consome uma API para recuperar as informações da saúde do Elastic Search hospedado na aws e o exibe em gráfico usando Chart.js e Vue Chartkick. Consome uma API Rest com lista de usuários, autenticação e verificação de sessão que mantém por 2 horas usando o token JWT (você pode mudar o tempo de sessão).
 
-<div style="text-align:center">
+<h2 align="center">
   <img src="./git-images/git-imagem1.png" alt="img-1">
   <img src="./git-images/git-imagem2.png" alt="img-2">
-</div>
+</h2>
 
 ## Tecnologias utilizadas:
   - [Node.js](https://nodejs.org)
